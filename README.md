@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/trotttrotttrott/asdf-tanka.svg?branch=master)](https://travis-ci.org/trotttrotttrott/asdf-tanka)
 
-[Asdf](https://github.com/asdf-vm/asdf) plugin for [Tanka](https://github.com/grafana/tanka).
+[Tanka](https://github.com/grafana/tanka) plugin for [asdf](https://github.com/asdf-vm/asdf) version manager.
 
 ## Install
 
