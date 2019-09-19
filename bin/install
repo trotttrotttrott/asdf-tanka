@@ -2,11 +2,11 @@
 
 set -e
 
-arch=$(uname | tr '[:upper:]' '[:lower:]')
+os=$(uname | tr '[:upper:]' '[:lower:]')
 
 mkdir -p "${ASDF_INSTALL_PATH}/bin"
 
 curl -fSL -o "${ASDF_INSTALL_PATH}/bin/tk" \
-  "https://github.com/grafana/tanka/releases/download/v${ASDF_INSTALL_VERSION}/tk-${arch}-amd64"
+  "https://github.com/grafana/tanka/releases/download/v${ASDF_INSTALL_VERSION}/tk-${os}-amd64"
 
 chmod +x "${ASDF_INSTALL_PATH}/bin/tk"
