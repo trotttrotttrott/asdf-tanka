@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-SEMVER_REGEX='(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(\-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?'
+release_url='https://api.github.com/repos/grafana/tanka/releases'
 
-for tag in $(git ls-remote --tags 'https://github.com/grafana/tanka'); do
-  if [[ $tag =~ refs/tags/v${SEMVER_REGEX}$ ]]; then
-    versions="${versions} ${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
-  fi
-done
-
-echo "$versions"
+echo $(
+  curl --fail --silent "${release_url}" |
+    jq '.[] | select(.prerelease == false) | .tag_name | sub("v"; "")' -r |
+    sort --version-sort
+)
